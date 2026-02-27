@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Real Estate NFT - Property Preview</title>
+    <title>TIRIOS - Best City | Real Estate NFT</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -18,37 +18,28 @@
                 </div>
                 
                 <div class="property-details">
-                    <div class="top-actions">
-                        <button class="wallet-btn" id="connectWallet">
-                            <i class="fas fa-wallet"></i>
-                            Connect Wallet
-                        </button>
-                        <button class="btn btn-primary purchase-top" id="purchaseBtn">
-                            <i class="fas fa-shopping-cart"></i>
-                            Purchase Now
-                        </button>
-                    </div>
-                    
                     <div class="property-header">
-                        <h1 class="property-title">Luxury Downtown Apartment</h1>
-                        <div class="property-location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Manhattan, New York</span>
+                        <div class="title-location">
+                            <h1 class="property-title">Luxury Downtown Apartment</h1>
+                            <div class="property-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Manhattan, New York</span>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="property-specs">
-                        <div class="spec">
-                            <i class="fas fa-bed"></i>
-                            <span>3 Beds</span>
-                        </div>
-                        <div class="spec">
-                            <i class="fas fa-bath"></i>
-                            <span>2 Baths</span>
-                        </div>
-                        <div class="spec">
-                            <i class="fas fa-ruler-combined"></i>
-                            <span>1,850 sqft</span>
+                        
+                        <div class="property-specs">
+                            <div class="spec">
+                                <i class="fas fa-bed"></i>
+                                <span>3 Beds</span>
+                            </div>
+                            <div class="spec">
+                                <i class="fas fa-bath"></i>
+                                <span>2 Baths</span>
+                            </div>
+                            <div class="spec">
+                                <i class="fas fa-ruler-combined"></i>
+                                <span>1,850 sqft</span>
+                            </div>
                         </div>
                     </div>
 
@@ -85,44 +76,76 @@
                         </div>
                     </div>
 
-                    <div class="pricing-section">
-                        <div class="price-info">
-                            <div class="current-price">
-                                <span class="price-label">Current Price</span>
-                                <div class="price-amount">
-                                    <span class="eth-price">2.5 ETH</span>
-                                    <span class="usd-price">$4,125.00</span>
+                    <div class="token-purchase-section">
+                        <div class="purchase-card">
+                            <div class="price-info">
+                                <div class="current-price">
+                                    <span class="price-label">Current Price</span>
+                                    <div class="price-amount">
+                                        <span class="eth-price">$10.00</span>
+                                        <span class="usd-price">per token</span>
+                                    </div>
+                                </div>
+                                <div class="price-change positive">
+                                    <i class="fas fa-arrow-up"></i>
+                                    <span>+5.2%</span>
                                 </div>
                             </div>
-                            <div class="price-change positive">
-                                <i class="fas fa-arrow-up"></i>
-                                <span>+12.5%</span>
+                            
+                            <div class="token-selector">
+                                <label class="selector-label">Number of Tokens</label>
+                                <div class="selector-controls">
+                                    <button class="quantity-btn" id="decreaseBtn">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <input type="number" class="quantity-input" id="tokenQuantity" value="1" min="1" max="1000">
+                                    <button class="quantity-btn" id="increaseBtn">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                                <div class="quick-select">
+                                    <button class="quick-btn" data-quantity="10">10</button>
+                                    <button class="quick-btn" data-quantity="50">50</button>
+                                    <button class="quick-btn" data-quantity="100">100</button>
+                                    <button class="quick-btn" data-quantity="500">500</button>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="ownership-info">
-                            <span class="ownership-label">You will own</span>
-                            <span class="ownership-shares">10 shares (1%)</span>
+                            
+                            <div class="purchase-summary">
+                                <div class="total-info">
+                                    <span class="total-label">Total Cost</span>
+                                    <span class="total-amount" id="totalCost">$10.00</span>
+                                </div>
+                                
+                                <button class="btn btn-primary purchase-large" id="purchaseBtn">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    Purchase Now
+                                </button>
+                            </div>
                         </div>
                     </div>
 
                     <div class="transaction-details">
                         <h3>Transaction Summary</h3>
                         <div class="detail-row">
-                            <span>Property Value</span>
-                            <span>2.5 ETH</span>
+                            <span>Token Price</span>
+                            <span>$10.00</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Quantity</span>
+                            <span id="summaryQuantity">1</span>
                         </div>
                         <div class="detail-row">
                             <span>Platform Fee</span>
-                            <span>0.025 ETH</span>
+                            <span id="platformFee">$0.50</span>
                         </div>
                         <div class="detail-row">
                             <span>Gas Estimate</span>
-                            <span>0.003 ETH</span>
+                            <span>$0.10</span>
                         </div>
                         <div class="detail-row total">
                             <span>Total</span>
-                            <span>2.528 ETH</span>
+                            <span id="transactionTotal">$10.60</span>
                         </div>
                     </div>
 
@@ -138,12 +161,7 @@
 
         <footer class="footer">
             <div class="footer-content">
-                <p>&copy; 2024 RealEstateNFT. All rights reserved.</p>
-                <div class="footer-links">
-                    <a href="#">Terms</a>
-                    <a href="#">Privacy</a>
-                    <a href="#">Support</a>
-                </div>
+                <p>&copy; 2024 TIRIOS - Best City. All rights reserved. | <a href="#">Terms</a> | <a href="#">Privacy</a> | <a href="#">Support</a></p>
             </div>
         </footer>
     </div>

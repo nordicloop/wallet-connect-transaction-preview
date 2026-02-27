@@ -61,7 +61,7 @@ body {
 /* Property image */
 .property-image {
     position: relative;
-    height: 250px;
+    height: 150px;
     overflow: hidden;
 }
 
@@ -97,46 +97,22 @@ body {
 
 .top-actions {
     display: flex;
-    gap: 1rem;
+    justify-content: center;
     margin-bottom: 1.5rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid var(--border-color);
-}
-
-.wallet-btn {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.25rem;
-    background: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: var(--radius-lg);
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    font-size: 0.875rem;
-}
-
-.wallet-btn:hover {
-    background: var(--primary-dark);
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-md);
-}
-
-.wallet-btn.connected {
-    background: var(--success-color);
 }
 
 .purchase-top {
     background: var(--primary-color);
     color: white;
     border: none;
-    padding: 0.75rem 1.5rem;
+    padding: 0.75rem 2rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;
     font-size: 0.875rem;
+    border-radius: var(--radius-lg);
 }
 
 .purchase-top:hover {
@@ -145,8 +121,225 @@ body {
     box-shadow: var(--shadow-md);
 }
 
+/* Token purchase section */
+.token-purchase-section {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border-color);
+}
+
+.purchase-card {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    color: white;
+    box-shadow: var(--shadow-lg);
+}
+
+.purchase-card .price-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.purchase-card .current-price {
+    flex: 1;
+}
+
+.purchase-card .price-label {
+    font-size: 0.75rem;
+    opacity: 0.9;
+    margin-bottom: 0;
+}
+
+.purchase-card .price-amount {
+    display: flex;
+    align-items: baseline;
+    gap: 0.25rem;
+}
+
+.purchase-card .eth-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.purchase-card .usd-price {
+    font-size: 0.75rem;
+    opacity: 0.8;
+}
+
+.purchase-card .price-change {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.125rem 0.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-md);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.purchase-card .price-change.positive {
+    background: rgba(16, 185, 129, 0.2);
+}
+
+.purchase-card .token-selector {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.purchase-card .selector-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    opacity: 0.9;
+    color: white;
+}
+
+.purchase-card .selector-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.purchase-card .quantity-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    width: 2rem;
+    height: 2rem;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.75rem;
+}
+
+.purchase-card .quantity-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+}
+
+.purchase-card .quantity-btn:active {
+    transform: translateY(0);
+}
+
+.purchase-card .quantity-input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 0.375rem 0.75rem;
+    border-radius: var(--radius-md);
+    text-align: center;
+    font-size: 0.875rem;
+    font-weight: 600;
+    width: 3.5rem;
+    transition: all 0.2s ease;
+}
+
+.purchase-card .quantity-input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.purchase-card .quantity-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.purchase-card .quick-select {
+    display: flex;
+    gap: 0.375rem;
+    flex-wrap: wrap;
+}
+
+.purchase-card .quick-btn {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: white;
+    padding: 0.375rem 0.5rem;
+    border-radius: var(--radius-md);
+    font-size: 0.625rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 2rem;
+}
+
+.purchase-card .quick-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-1px);
+}
+
+.purchase-card .quick-btn:active {
+    transform: translateY(0);
+}
+
+.purchase-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.total-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    flex: 1;
+}
+
+.total-label {
+    font-size: 0.875rem;
+    opacity: 0.9;
+}
+
+.total-amount {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.purchase-large {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 0.875rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.purchase-large:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
 .property-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 1.5rem;
+    gap: 1rem;
+}
+
+.title-location {
+    flex: 1;
 }
 
 .property-title {
@@ -172,10 +365,11 @@ body {
 /* Property specs */
 .property-specs {
     display: flex;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--border-color);
+    gap: 1rem;
+    margin-bottom: 0;
+    padding: 0;
+    border: none;
+    flex-shrink: 0;
 }
 
 .spec {
@@ -203,19 +397,19 @@ body {
 .nft-info {
     background: var(--bg-secondary);
     border-radius: var(--radius-lg);
-    padding: 1.5rem;
-    margin-bottom: 2rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .nft-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
 }
 
 .nft-header h2 {
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--text-primary);
 }
@@ -225,35 +419,35 @@ body {
     align-items: center;
     gap: 0.25rem;
     color: var(--success-color);
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     font-weight: 600;
 }
 
 .verified-badge i {
-    font-size: 1rem;
+    font-size: 0.875rem;
 }
 
 .nft-details-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.75rem;
 }
 
 .detail-item {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: 0.125rem;
 }
 
 .detail-item .label {
-    font-size: 0.75rem;
+    font-size: 0.625rem;
     color: var(--text-tertiary);
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
 
 .detail-item .value {
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     font-weight: 600;
     color: var(--text-primary);
 }
@@ -275,7 +469,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .current-price {
@@ -319,6 +513,107 @@ body {
     background: rgba(16, 185, 129, 0.2);
 }
 
+/* Token selector */
+.token-selector {
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-color);
+}
+
+.selector-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+}
+
+.selector-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.quantity-btn {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.875rem;
+}
+
+.quantity-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-1px);
+}
+
+.quantity-btn:active {
+    transform: translateY(0);
+}
+
+.quantity-input {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    width: 4rem;
+    transition: all 0.2s ease;
+}
+
+.quantity-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.quantity-input::placeholder {
+    color: var(--text-tertiary);
+}
+
+.quick-select {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.quick-btn {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-md);
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 2.5rem;
+}
+
+.quick-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-1px);
+}
+
+.quick-btn:active {
+    transform: translateY(0);
+}
+
 .ownership-info {
     padding-top: 1rem;
     border-top: 1px solid rgba(255, 255, 255, 0.2);
@@ -333,7 +628,7 @@ body {
 }
 
 .ownership-shares {
-    font-size: 0.875rem;
+    font-size: 1.125rem;
     font-weight: 600;
 }
 
@@ -442,6 +737,7 @@ body {
     display: flex;
     justify-content: center;
     gap: 2rem;
+    flex-wrap: wrap;
 }
 
 .footer-links a {
@@ -588,13 +884,33 @@ body {
         padding: 1rem;
     }
     
-    .top-actions {
+    .property-header {
         flex-direction: column;
-        gap: 0.75rem;
+        align-items: flex-start;
+        gap: 0.5rem;
     }
     
-    .wallet-btn,
-    .purchase-top {
+    .property-specs {
+        margin-top: 0.5rem;
+    }
+    
+    .token-purchase-section {
+        padding: 1rem;
+    }
+    
+    .purchase-card {
+        padding: 1rem;
+    }
+    
+    .purchase-summary {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+    }
+    
+    .purchase-large {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.875rem;
         width: 100%;
         justify-content: center;
     }
@@ -626,6 +942,18 @@ body {
         align-self: flex-start;
     }
     
+    .token-selector {
+        padding: 1rem;
+    }
+    
+    .selector-controls {
+        justify-content: center;
+    }
+    
+    .quick-select {
+        justify-content: center;
+    }
+    
     .ownership-info {
         flex-direction: column;
         gap: 0.5rem;
@@ -653,7 +981,7 @@ body {
 
 @media (max-width: 480px) {
     .property-image {
-        height: 200px;
+        height: 150px;
     }
     
     .property-title {

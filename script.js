@@ -1,42 +1,47 @@
 // DOM Elements
-const connectWalletBtn = document.getElementById('connectWallet');
-const walletModal = document.getElementById('walletModal');
-const successModal = document.getElementById('successModal');
-const closeModalBtn = document.getElementById('closeModal');
-const previewBtn = document.getElementById('previewBtn');
 const purchaseBtn = document.getElementById('purchaseBtn');
+const successModal = document.getElementById('successModal');
+const previewBtn = document.getElementById('previewBtn');
 const viewNFTBtn = document.getElementById('viewNFTBtn');
-const walletOptions = document.querySelectorAll('.wallet-option');
+const decreaseBtn = document.getElementById('decreaseBtn');
+const increaseBtn = document.getElementById('increaseBtn');
+const tokenQuantity = document.getElementById('tokenQuantity');
+const totalCost = document.getElementById('totalCost');
+const summaryQuantity = document.getElementById('summaryQuantity');
+const platformFee = document.getElementById('platformFee');
+const transactionTotal = document.getElementById('transactionTotal');
+const quickBtns = document.querySelectorAll('.quick-btn');
 
 // State
-let isWalletConnected = false;
-let selectedWallet = null;
+const TOKEN_PRICE = 10.00;
+const PLATFORM_FEE_RATE = 0.05; // 5%
+const GAS_FEE = 0.10;
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     initializeEventListeners();
-    updateWalletButton();
 });
 
 // Event Listeners
 function initializeEventListeners() {
-    connectWalletBtn.addEventListener('click', openWalletModal);
-    closeModalBtn.addEventListener('click', closeWalletModal);
     previewBtn.addEventListener('click', previewNFT);
     purchaseBtn.addEventListener('click', purchaseNFT);
     viewNFTBtn.addEventListener('click', viewNFT);
     
-    walletOptions.forEach(option => {
-        option.addEventListener('click', () => connectWallet(option));
+    // Quantity selector events
+    decreaseBtn.addEventListener('click', decreaseQuantity);
+    increaseBtn.addEventListener('click', increaseQuantity);
+    tokenQuantity.addEventListener('input', handleQuantityInput);
+    
+    // Quick select buttons
+    quickBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const quantity = parseInt(btn.dataset.quantity);
+            setQuantity(quantity);
+        });
     });
     
     // Close modal when clicking outside
-    walletModal.addEventListener('click', (e) => {
-        if (e.target === walletModal) {
-            closeWalletModal();
-        }
-    });
-    
     successModal.addEventListener('click', (e) => {
         if (e.target === successModal) {
             closeSuccessModal();
@@ -46,72 +51,59 @@ function initializeEventListeners() {
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-            closeWalletModal();
             closeSuccessModal();
         }
     });
-}
-
-// Wallet Connection
-function openWalletModal() {
-    walletModal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-
-function closeWalletModal() {
-    walletModal.classList.remove('active');
-    document.body.style.overflow = '';
-}
-
-function connectWallet(walletOption) {
-    const walletName = walletOption.querySelector('span').textContent;
-    selectedWallet = walletName;
     
-    // Simulate wallet connection
-    setTimeout(() => {
-        isWalletConnected = true;
-        updateWalletButton();
-        closeWalletModal();
-        showNotification(`${walletName} connected successfully!`, 'success');
-    }, 1000);
-    
-    // Add loading state to button
-    walletOption.classList.add('loading');
-    walletOption.disabled = true;
-    
-    setTimeout(() => {
-        walletOption.classList.remove('loading');
-        walletOption.disabled = false;
-    }, 1000);
+    // Initialize display
+    updateDisplay();
 }
 
-function updateWalletButton() {
-    if (isWalletConnected) {
-        connectWalletBtn.innerHTML = `
-            <i class="fas fa-wallet"></i>
-            ${selectedWallet || 'Wallet Connected'}
-        `;
-        connectWalletBtn.classList.add('connected');
-        connectWalletBtn.disabled = true;
-    } else {
-        connectWalletBtn.innerHTML = `
-            <i class="fas fa-wallet"></i>
-            Connect Wallet
-        `;
-        connectWalletBtn.classList.remove('connected');
-        connectWalletBtn.disabled = false;
+// Quantity selector functions
+function decreaseQuantity() {
+    const currentQuantity = parseInt(tokenQuantity.value);
+    if (currentQuantity > 1) {
+        setQuantity(currentQuantity - 1);
     }
+}
+
+function increaseQuantity() {
+    const currentQuantity = parseInt(tokenQuantity.value);
+    if (currentQuantity < 1000) {
+        setQuantity(currentQuantity + 1);
+    }
+}
+
+function handleQuantityInput(e) {
+    let value = parseInt(e.target.value);
+    if (isNaN(value) || value < 1) {
+        value = 1;
+    } else if (value > 1000) {
+        value = 1000;
+    }
+    setQuantity(value);
+}
+
+function setQuantity(quantity) {
+    tokenQuantity.value = quantity;
+    updateDisplay();
+}
+
+function updateDisplay() {
+    const quantity = parseInt(tokenQuantity.value) || 1;
+    const subtotal = quantity * TOKEN_PRICE;
+    const platformFee = subtotal * PLATFORM_FEE_RATE;
+    const total = subtotal + platformFee + GAS_FEE;
+    
+    // Update displays
+    totalCost.textContent = `$${subtotal.toFixed(2)}`;
+    summaryQuantity.textContent = quantity;
+    platformFee.textContent = `$${platformFee.toFixed(2)}`;
+    transactionTotal.textContent = `$${total.toFixed(2)}`;
 }
 
 // NFT Preview
 function previewNFT() {
-    if (!isWalletConnected) {
-        showNotification('Please connect your wallet first', 'warning');
-        openWalletModal();
-        return;
-    }
-    
-    // Create a preview modal or navigate to preview
     showNotification('NFT preview feature coming soon!', 'info');
     
     // Simulate preview action
@@ -133,12 +125,6 @@ function previewNFT() {
 
 // Purchase NFT
 function purchaseNFT() {
-    if (!isWalletConnected) {
-        showNotification('Please connect your wallet first', 'warning');
-        openWalletModal();
-        return;
-    }
-    
     // Add loading state to purchase button
     purchaseBtn.classList.add('loading');
     purchaseBtn.disabled = true;
@@ -342,14 +328,16 @@ function updatePriceSimulation() {
     
     // Simulate price changes
     setInterval(() => {
-        const currentEth = parseFloat(ethPriceElement.textContent);
-        const change = (Math.random() - 0.5) * 0.01; // ±0.5% change
-        const newEth = (currentEth + change).toFixed(3);
-        const ethToUsd = 1650; // Mock conversion rate
-        const newUsd = (newEth * ethToUsd).toFixed(2);
+        const currentPrice = parseFloat(ethPriceElement.textContent.replace('$', ''));
+        if (isNaN(currentPrice)) return;
         
-        ethPriceElement.textContent = `${newEth} ETH`;
-        usdPriceElement.textContent = `$${newUsd}`;
+        const change = (Math.random() - 0.5) * 0.01; // ±0.5% change
+        const newPrice = (currentPrice + change).toFixed(2);
+        const ethToUsd = 1; // Since we're showing USD directly
+        const newUsd = (newPrice * ethToUsd).toFixed(2);
+        
+        ethPriceElement.textContent = `$${newPrice}`;
+        usdPriceElement.textContent = 'per token';
         
         // Update price change indicator
         const isPositive = change > 0;
@@ -432,7 +420,6 @@ function trackEvent(eventName, data) {
 }
 
 // Track user interactions
-connectWalletBtn.addEventListener('click', () => trackEvent('wallet_connect_attempt'));
 previewBtn.addEventListener('click', () => trackEvent('nft_preview'));
 purchaseBtn.addEventListener('click', () => trackEvent('purchase_attempt'));
 
