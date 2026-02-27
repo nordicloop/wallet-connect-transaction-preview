@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate NFT - Property Preview</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <main class="main-content">
+            <div class="property-card">
+                <div class="property-image">
+                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Luxury Apartment">
+                    <div class="property-badge">Premium</div>
+                </div>
+                
+                <div class="property-details">
+                    <div class="top-actions">
+                        <button class="wallet-btn" id="connectWallet">
+                            <i class="fas fa-wallet"></i>
+                            Connect Wallet
+                        </button>
+                        <button class="btn btn-primary purchase-top" id="purchaseBtn">
+                            <i class="fas fa-shopping-cart"></i>
+                            Purchase Now
+                        </button>
+                    </div>
+                    
+                    <div class="property-header">
+                        <h1 class="property-title">Luxury Downtown Apartment</h1>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Manhattan, New York</span>
+                        </div>
+                    </div>
+
+                    <div class="property-specs">
+                        <div class="spec">
+                            <i class="fas fa-bed"></i>
+                            <span>3 Beds</span>
+                        </div>
+                        <div class="spec">
+                            <i class="fas fa-bath"></i>
+                            <span>2 Baths</span>
+                        </div>
+                        <div class="spec">
+                            <i class="fas fa-ruler-combined"></i>
+                            <span>1,850 sqft</span>
+                        </div>
+                    </div>
+
+                    <div class="property-description">
+                        <p>Experience luxury living in this stunning downtown apartment featuring floor-to-ceiling windows, modern amenities, and breathtaking city views. This property represents a unique opportunity to own a tokenized piece of prime real estate.</p>
+                    </div>
+
+                    <div class="nft-info">
+                        <div class="nft-header">
+                            <h2>NFT Details</h2>
+                            <div class="verified-badge">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Verified</span>
+                            </div>
+                        </div>
+                        
+                        <div class="nft-details-grid">
+                            <div class="detail-item">
+                                <span class="label">Token ID</span>
+                                <span class="value">#RE-2024-001</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Contract</span>
+                                <span class="value contract-address">0x1234...5678</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Blockchain</span>
+                                <span class="value">Ethereum</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Fractional Shares</span>
+                                <span class="value">1,000</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pricing-section">
+                        <div class="price-info">
+                            <div class="current-price">
+                                <span class="price-label">Current Price</span>
+                                <div class="price-amount">
+                                    <span class="eth-price">2.5 ETH</span>
+                                    <span class="usd-price">$4,125.00</span>
+                                </div>
+                            </div>
+                            <div class="price-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>+12.5%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="ownership-info">
+                            <span class="ownership-label">You will own</span>
+                            <span class="ownership-shares">10 shares (1%)</span>
+                        </div>
+                    </div>
+
+                    <div class="transaction-details">
+                        <h3>Transaction Summary</h3>
+                        <div class="detail-row">
+                            <span>Property Value</span>
+                            <span>2.5 ETH</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Platform Fee</span>
+                            <span>0.025 ETH</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Gas Estimate</span>
+                            <span>0.003 ETH</span>
+                        </div>
+                        <div class="detail-row total">
+                            <span>Total</span>
+                            <span>2.528 ETH</span>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-secondary" id="previewBtn">
+                            <i class="fas fa-eye"></i>
+                            Preview NFT
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2024 RealEstateNFT. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Terms</a>
+                    <a href="#">Privacy</a>
+                    <a href="#">Support</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal for wallet connection -->
+    <div class="modal" id="walletModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Connect Wallet</h3>
+                <button class="close-btn" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="wallet-options">
+                    <button class="wallet-option">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/MetaMask_Fox.svg" alt="MetaMask">
+                        <span>MetaMask</span>
+                    </button>
+                    <button class="wallet-option">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/WalletConnect-Full-Logo-Blue.svg" alt="WalletConnect">
+                        <span>WalletConnect</span>
+                    </button>
+                    <button class="wallet-option">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/94/Coinbase_Wallet_logo.svg" alt="Coinbase">
+                        <span>Coinbase Wallet</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content success">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Purchase Successful!</h3>
+            <p>You now own 10 shares of this property. Your NFT has been transferred to your wallet.</p>
+            <button class="btn btn-primary" id="viewNFTBtn">View NFT</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

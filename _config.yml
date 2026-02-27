@@ -1,0 +1,43 @@
+# GitHub Pages configuration
+theme: jekyll-theme-minimal
+title: Real Estate NFT Purchase Preview
+description: A mobile-friendly preview page for purchasing tokenized real estate NFTs
+baseurl: "/wallet-connect-transaction-preview"
+url: "https://davidfernandez.github.io"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+
+# Exclude files from processing
+exclude:
+  - README.md
+  - .gitignore
+  - package.json
+  - node_modules/
+  - vendor/
+
+# Include files
+include:
+  - _pages
+
+# SEO settings
+author: David Fernandez
+lang: en
+timezone: UTC
+
+# Social media (optional)
+twitter_username: ""
+github_username: davidfernandez
+
+# Google Analytics (optional - add your tracking ID)
+google_analytics: ""
+
+# Collections (for future blog posts or additional pages)
+collections:
+  pages:
+    output: true
+    permalink: /:name/
