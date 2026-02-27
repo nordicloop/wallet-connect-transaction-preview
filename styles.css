@@ -61,7 +61,7 @@ body {
 /* Property image */
 .property-image {
     position: relative;
-    height: 150px;
+    height: 120px;
     overflow: hidden;
 }
 
@@ -123,11 +123,7 @@ body {
 
 /* Token purchase section */
 .token-purchase-section {
-    background: var(--bg-secondary);
-    border-radius: var(--radius-lg);
-    padding: 1.5rem;
     margin-bottom: 2rem;
-    border: 1px solid var(--border-color);
 }
 
 .purchase-card {
@@ -387,10 +383,37 @@ body {
 
 /* Property description */
 .property-description {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     color: var(--text-secondary);
     line-height: 1.7;
     font-size: 0.95rem;
+}
+
+.property-description p {
+    margin: 0;
+}
+
+.see-more {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+#full-description:target {
+    display: block !important;
+}
+
+#full-description:target ~ p:first-of-type {
+    display: none;
+}
+
+#full-description:target ~ #short-description {
+    display: none;
+}
+
+#short-description {
+    display: block;
 }
 
 /* NFT Info */
@@ -405,13 +428,14 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
 }
 
 .nft-header h2 {
     font-size: 1rem;
     font-weight: 600;
     color: var(--text-primary);
+    margin: 0;
 }
 
 .verified-badge {
@@ -419,12 +443,12 @@ body {
     align-items: center;
     gap: 0.25rem;
     color: var(--success-color);
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     font-weight: 600;
 }
 
 .verified-badge i {
-    font-size: 0.875rem;
+    font-size: 1rem;
 }
 
 .nft-details-grid {

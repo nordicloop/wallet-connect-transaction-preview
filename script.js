@@ -17,6 +17,23 @@ const TOKEN_PRICE = 10.00;
 const PLATFORM_FEE_RATE = 0.05; // 5%
 const GAS_FEE = 0.10;
 
+// Toggle description
+function toggleDescription() {
+    const shortDesc = document.getElementById('shortDesc');
+    const fullDesc = document.getElementById('fullDesc');
+    const seeMoreLink = shortDesc.querySelector('.see-more');
+    
+    if (fullDesc.style.display === 'none') {
+        shortDesc.style.display = 'none';
+        fullDesc.style.display = 'block';
+        seeMoreLink.textContent = 'See less';
+    } else {
+        shortDesc.style.display = 'block';
+        fullDesc.style.display = 'none';
+        seeMoreLink.textContent = 'See more';
+    }
+}
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     initializeEventListeners();
