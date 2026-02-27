@@ -61,7 +61,7 @@ body {
 /* Property image */
 .property-image {
     position: relative;
-    height: 120px;
+    height: 60px;
     overflow: hidden;
 }
 
@@ -385,8 +385,8 @@ body {
 .property-description {
     margin-bottom: 1.5rem;
     color: var(--text-secondary);
-    line-height: 1.7;
-    font-size: 0.95rem;
+    line-height: 1.4;
+    font-size: 0.9rem;
 }
 
 .property-description p {
